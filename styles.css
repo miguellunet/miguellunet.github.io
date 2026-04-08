@@ -327,8 +327,47 @@ h3 {
   gap: 0.25rem;
 }
 
-.travel-toolbar select {
-  min-width: 140px;
+.year-range-filter {
+  border: 1px solid #d9e0d1;
+  border-radius: 12px;
+  background: #fafcf7;
+  padding: 0.6rem 0.75rem;
+  min-width: min(420px, 100%);
+}
+
+.year-range-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.year-range-values {
+  margin: 0.1rem 0 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.year-range-sliders {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.year-range-sliders input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.year-range-filter[hidden] {
+  display: none;
+}
+
+.travel-toolbar select,
+.travel-toolbar input[type="range"] {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0.35rem 0.45rem;

@@ -92,12 +92,24 @@
         <h2>Travel Map</h2>
         <p class="muted">Places visited around the world.</p>
         <div class="travel-toolbar">
-          <label>
-            Year
-            <select id="year-filter">
-              <option value="all">All</option>
-            </select>
-          </label>
+          <div class="year-range-filter" id="year-range-filter">
+            <p class="year-range-title">Year interval</p>
+            <p class="year-range-values">
+              <span id="year-min-label">-</span>
+              <span aria-hidden="true">to</span>
+              <span id="year-max-label">-</span>
+            </p>
+            <div class="year-range-sliders">
+              <label>
+                From
+                <input id="year-min-filter" type="range" min="0" max="0" value="0" step="1" />
+              </label>
+              <label>
+                To
+                <input id="year-max-filter" type="range" min="0" max="0" value="0" step="1" />
+              </label>
+            </div>
+          </div>
         </div>
         <div id="map-legend" class="map-legend"></div>
         <div id="travel-map" aria-label="World map with visited places"></div>

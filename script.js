@@ -18,7 +18,11 @@ const el = {
   ongoingList: document.querySelector("#ongoing-list"),
   musicList: document.querySelector("#music-list"),
   musicIntro: document.querySelector("#music-intro"),
-  yearFilter: document.querySelector("#year-filter"),
+  yearRangeFilter: document.querySelector("#year-range-filter"),
+  yearMinFilter: document.querySelector("#year-min-filter"),
+  yearMaxFilter: document.querySelector("#year-max-filter"),
+  yearMinLabel: document.querySelector("#year-min-label"),
+  yearMaxLabel: document.querySelector("#year-max-label"),
   mapLegend: document.querySelector("#map-legend"),
 };
 
@@ -405,21 +409,32 @@ function renderMap(places, emojiMap = {}) {
     ...emojiMap,
   };
 
-  const years = [...new Set(places.map((p) => p.year).filter(Boolean))].sort(
-    (a, b) => Number(a) - Number(b)
+  const years = [...new Set(places.map((p) => Number.parseInt(p.year, 10)).filter(Number.isFinite))].sort(
+    (a, b) => a - b
   );
   const contexts = [...new Set(places.map((p) => p.context).filter(Boolean))].sort();
   let selectedContext = "all";
+  let selectedMinYear = years.length ? years[0] : null;
+  let selectedMaxYear = years.length ? years[years.length - 1] : null;
 
-  if (el.yearFilter) {
-    el.yearFilter.innerHTML = '<option value="all">All</option>';
-    years.forEach((year) => {
-      const option = document.createElement("option");
-      option.value = year;
-      option.textContent = year;
-      el.yearFilter.appendChild(option);
-    });
+  if (el.yearRangeFilter) {
+    el.yearRangeFilter.hidden = !years.length;
   }
+
+  if (el.yearMinFilter && el.yearMaxFilter && years.length) {
+    const minYear = years[0];
+    const maxYear = years[years.length - 1];
+
+    el.yearMinFilter.min = String(minYear);
+    el.yearMinFilter.max = String(maxYear);
+    el.yearMinFilter.value = String(minYear);
+
+    el.yearMaxFilter.min = String(minYear);
+    el.yearMaxFilter.max = String(maxYear);
+    el.yearMaxFilter.value = String(maxYear);
+  }
+
+  syncYearLabels();
 
   if (el.mapLegend) {
     el.mapLegend.innerHTML = "";
@@ -443,10 +458,23 @@ function renderMap(places, emojiMap = {}) {
 
   const markerLayer = L.layerGroup().addTo(map);
 
+  function syncYearLabels() {
+    if (el.yearMinLabel) {
+      el.yearMinLabel.textContent = selectedMinYear === null ? "-" : String(selectedMinYear);
+    }
+    if (el.yearMaxLabel) {
+      el.yearMaxLabel.textContent = selectedMaxYear === null ? "-" : String(selectedMaxYear);
+    }
+  }
+
   function paintMap() {
-    const selectedYear = el.yearFilter ? el.yearFilter.value : "all";
     const filtered = places.filter((place) => {
-      const yearOk = selectedYear === "all" || place.year === selectedYear;
+      const placeYear = Number.parseInt(place.year, 10);
+      const yearFilterEnabled = selectedMinYear !== null && selectedMaxYear !== null;
+      const yearOk =
+        !yearFilterEnabled ||
+        !Number.isFinite(placeYear) ||
+        (placeYear >= selectedMinYear && placeYear <= selectedMaxYear);
       const contextOk = selectedContext === "all" || place.context === selectedContext;
       return yearOk && contextOk;
     });
@@ -488,7 +516,44 @@ function renderMap(places, emojiMap = {}) {
     }
   }
 
-  if (el.yearFilter) el.yearFilter.onchange = paintMap;
+  function updateMinYear(value) {
+    if (!Number.isFinite(value) || selectedMinYear === null || selectedMaxYear === null) {
+      return;
+    }
+
+    selectedMinYear = Math.min(value, selectedMaxYear);
+    if (el.yearMinFilter) {
+      el.yearMinFilter.value = String(selectedMinYear);
+    }
+  }
+
+  function updateMaxYear(value) {
+    if (!Number.isFinite(value) || selectedMinYear === null || selectedMaxYear === null) {
+      return;
+    }
+
+    selectedMaxYear = Math.max(value, selectedMinYear);
+    if (el.yearMaxFilter) {
+      el.yearMaxFilter.value = String(selectedMaxYear);
+    }
+  }
+
+  if (el.yearMinFilter) {
+    el.yearMinFilter.addEventListener("input", () => {
+      updateMinYear(Number.parseInt(el.yearMinFilter.value, 10));
+      syncYearLabels();
+      paintMap();
+    });
+  }
+
+  if (el.yearMaxFilter) {
+    el.yearMaxFilter.addEventListener("input", () => {
+      updateMaxYear(Number.parseInt(el.yearMaxFilter.value, 10));
+      syncYearLabels();
+      paintMap();
+    });
+  }
+
   if (el.mapLegend) {
     el.mapLegend.addEventListener("click", (event) => {
       const button = event.target.closest("button[data-context]");
