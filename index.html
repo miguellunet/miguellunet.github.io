@@ -99,15 +99,10 @@
               <span aria-hidden="true">to</span>
               <span id="year-max-label">-</span>
             </p>
-            <div class="year-range-sliders">
-              <label>
-                From
-                <input id="year-min-filter" type="range" min="0" max="0" value="0" step="1" />
-              </label>
-              <label>
-                To
-                <input id="year-max-filter" type="range" min="0" max="0" value="0" step="1" />
-              </label>
+            <div class="year-range-slider" id="year-range-slider" aria-label="Year range slider">
+              <div class="year-range-slider-track" aria-hidden="true"></div>
+              <input id="year-min-filter" type="range" min="0" max="0" value="0" step="1" aria-label="Start year" />
+              <input id="year-max-filter" type="range" min="0" max="0" value="0" step="1" aria-label="End year" />
             </div>
           </div>
         </div>

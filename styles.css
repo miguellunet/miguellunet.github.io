@@ -352,14 +352,88 @@ h3 {
   font-weight: 700;
 }
 
-.year-range-sliders {
-  display: grid;
-  gap: 0.45rem;
+.year-range-slider {
+  position: relative;
+  height: 28px;
+  --range-start: 0%;
+  --range-end: 100%;
 }
 
-.year-range-sliders input[type="range"] {
+.year-range-slider-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 8px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #dde4d8 0,
+    #dde4d8 var(--range-start),
+    var(--accent) var(--range-start),
+    var(--accent) var(--range-end),
+    #dde4d8 var(--range-end),
+    #dde4d8 100%
+  );
+}
+
+.year-range-slider input[type="range"] {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  accent-color: var(--accent);
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.year-range-slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: transparent;
+}
+
+.year-range-slider input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: transparent;
+}
+
+.year-range-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(25, 95, 74, 0.15);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.year-range-slider input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(25, 95, 74, 0.15);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#year-min-filter {
+  z-index: 3;
+}
+
+#year-max-filter {
+  z-index: 4;
 }
 
 .year-range-filter[hidden] {
@@ -368,10 +442,6 @@ h3 {
 
 .travel-toolbar select,
 .travel-toolbar input[type="range"] {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0.35rem 0.45rem;
-  background: #fff;
   color: var(--text);
 }
 
