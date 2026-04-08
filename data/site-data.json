@@ -1,98 +1,215 @@
 {
   "profile": {
-    "fullName": "Your Full Name",
-    "tagline": "PhD Candidate in XYZ | Data Scientist | Researcher",
-    "bio": "Write a short paragraph about yourself here. Include your main interests, your current role, and your long-term goals.",
+    "fullName": "Miguel Maria Pinto Lunet",
+    "tagline": "PhD Candidate at FEUP | Researcher at INESC TEC",
+    "bio": "PhD candidate at the Faculty of Engineering, University of Porto, and researcher at INESC TEC. My work focuses on sequential decision-making, explainable AI, combinatorial optimization, transportation, and inventory management.",
     "photo": "assets/profile-placeholder.svg",
     "cv": "assets/cv.pdf",
     "relevantLinks": [
-      { "label": "GitHub", "url": "https://github.com/your-username" },
-      { "label": "ORCID", "url": "https://orcid.org/0000-0000-0000-0000" },
-      { "label": "Scopus", "url": "https://www.scopus.com/authid/detail.uri?authorId=00000000000" },
-      { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/your-name" },
-      { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=your-id" }
+      { "label": "Email", "url": "mailto:miguel.lunet@inesctec.pt" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/miguellunet/?locale=en_US" },
+      { "label": "CIÊNCIA ID", "url": "https://www.cienciavitae.pt/portal/B81F-4BE7-113C" },
+      { "label": "ORCID", "url": "https://orcid.org/0009-0003-1794-7743" },
+      { "label": "Scopus Author ID", "url": "https://www.scopus.com/authid/detail.uri?authorId=60012649200&origin=resultslist" },
+      { "label": "Google Scholar", "url": "https://scholar.google.com/citations?view_op=list_works&hl=pt-PT&hl=pt-PT&user=88ZjLHEAAAAJ" }
     ]
   },
   "education": [
     {
-      "title": "PhD in Example Field",
-      "organization": "Example University",
-      "location": "City, Country",
-      "period": "2023 - Present",
-      "details": "Focus on machine learning for scientific applications."
+      "title": "PhD Candidate",
+      "organization": "Faculty of Engineering, University of Porto",
+      "location": "Porto, Portugal",
+      "period": "September 2025 - September 2028",
+      "details": "Dissertation: Sequential Decision-Making Applied to Combinatorial Optimization Problems."
     },
     {
-      "title": "MSc in Example Field",
-      "organization": "Example University",
-      "location": "City, Country",
-      "period": "2020 - 2022",
-      "details": "Thesis on example topic with distinction."
+      "title": "Master",
+      "organization": "Faculty of Engineering, University of Porto",
+      "location": "Porto, Portugal",
+      "period": "September 2023 - July 2025",
+      "details": "GPA: 18.0/20. Dissertation: Policy Development for Contemporary Sequential Decision-Making Problems in Transportation and Inventory Management. Grade: 20/20. Relevant coursework: Business Analytics; Optimization; Econometrics."
+    },
+    {
+      "title": "Bachelor",
+      "organization": "Faculty of Engineering, University of Porto",
+      "location": "Porto, Portugal",
+      "period": "September 2020 - July 2023",
+      "details": "GPA: 16.3/20. Relevant coursework: Math; Economics; Statistics; Energy; Operations Management; Programming."
+    },
+    {
+      "title": "Erasmus Exchange",
+      "organization": "Delft University of Technology",
+      "location": "Delft, The Netherlands",
+      "period": "September 2023 - January 2024",
+      "details": "Erasmus exchange with GPA 8.5/10. Relevant coursework: Multi-criteria decision analysis; Multimodal transportation systems."
     }
   ],
   "professionalExperience": [
     {
-      "title": "Data Scientist",
-      "organization": "Example Company",
-      "location": "Remote",
-      "period": "2022 - Present",
-      "details": "Built analytics pipelines and deployed predictive models."
+      "title": "Researcher",
+      "organization": "INESC TEC",
+      "location": "Porto, Portugal",
+      "period": "April 2024 - Present",
+      "details": "Research on sequential decision-making and explainable AI applied to transportation and inventory management. Published in IJCAI 2024 and GECCO 2025."
+    },
+    {
+      "title": "Student and entrepreneur",
+      "organization": "YES!Delft",
+      "location": "Delft, The Netherlands",
+      "period": "September 2023 - January 2024",
+      "details": "Participated in the Ready to Startup program and developed an idea focused on optimizing user screen time."
+    },
+    {
+      "title": "Instructor responsible",
+      "organization": "European Students of Industrial Engineering and Management (ESTIEM)",
+      "location": "Europe",
+      "period": "February 2023 - September 2024",
+      "details": "Managed a network of more than 200 instructors across Europe, allocated instructors to courses, and ensured communication with the central team."
+    },
+    {
+      "title": "Trainee in the digital transformation taskforce",
+      "organization": "Renault",
+      "location": "Cacia, Portugal",
+      "period": "July 2023 - August 2023",
+      "details": "Developed a Lean Six Sigma Green Belt project to increase operations data reliability and integrity across data collection, processing, and exportation."
+    },
+    {
+      "title": "Trainee in the operations team",
+      "organization": "Jerónimo Martins",
+      "location": "Alfena, Portugal",
+      "period": "February 2023 - June 2023",
+      "details": "Developed a Lean Six Sigma Green Belt project to increase operations data reliability and integrity across data collection, processing, and exportation."
     }
   ],
   "researchExperience": [
     {
-      "title": "Research Assistant",
-      "organization": "Example Lab",
-      "location": "City, Country",
-      "period": "2021 - 2023",
-      "details": "Worked on experiments and co-authored journal publications."
+      "title": "PEER (The hyPEr ExpeRt collaborative AI assistant)",
+      "organization": "INESC TEC",
+      "location": "Porto, Portugal",
+      "period": "Since October 2024",
+      "details": "Focuses on putting the user at the center of the AI design, development, deployment, and evaluation pipeline for mixed human-AI initiatives on complex sequential decision-making problems."
+    },
+    {
+      "title": "TRUST-AI (Transparent, Reliable and Unbiased Smart Tool for AI)",
+      "organization": "INESC TEC",
+      "location": "Porto, Portugal",
+      "period": "April 2024 - March 2025",
+      "details": "Involves human intelligence in the discovery process so that AI and humans work together to find effective, comprehensible, and generalizable solutions."
     }
   ],
   "publications": [
     {
-      "authors": "Surname, A.; Surname, B.",
-      "title": "Example Publication Title",
-      "venue": "Journal of Example Research",
-      "year": "2025",
-      "url": "https://doi.org/xx.xxxx/example"
+      "title": "LUNET2026110007"
     },
     {
-      "authors": "Surname, A.; Surname, C.",
-      "title": "Another Example Paper",
-      "venue": "Conference on Example Systems",
-      "year": "2024",
-      "url": ""
+      "title": "lunet2025policy"
+    },
+    {
+      "title": "lunet2025symbolic"
+    },
+    {
+      "title": "neveslearning"
     }
   ],
   "attendedConferencesWorkshops": [
     {
-      "name": "International Conference on Something",
-      "location": "Lisbon, Portugal",
-      "year": "2025"
+      "name": "10th AIROYoung Workshop and PhD School",
+      "location": "Padova, Italy",
+      "year": "February 2026"
     },
     {
-      "name": "Workshop on Data and Society",
-      "location": "Madrid, Spain",
-      "year": "2024"
+      "name": "Deep Learning Winter School",
+      "location": "Tromsø, Norway",
+      "year": "January 2026"
+    },
+    {
+      "name": "Mixed methods and interdisciplinary inquiry",
+      "location": "Aalborg, Denmark",
+      "year": "November 2025"
+    },
+    {
+      "name": "EWG PhD School on Retail Operations and Analytics",
+      "location": "Barcelona, Spain",
+      "year": "September 2025"
+    },
+    {
+      "name": "VeRoLog PhD School on Vehicle Routing and Logistics Optimization 2025",
+      "location": "Trento, Italy",
+      "year": "June 2025"
     }
   ],
   "travelPlaces": [
-    { "city": "Porto", "country": "Portugal", "lat": 41.1579, "lng": -8.6291, "year": "2024" },
-    { "city": "Berlin", "country": "Germany", "lat": 52.52, "lng": 13.405, "year": "2023" },
-    { "city": "Santiago", "country": "Chile", "lat": -33.4489, "lng": -70.6693, "year": "2022" },
-    { "city": "Tokyo", "country": "Japan", "lat": 35.6762, "lng": 139.6503, "year": "2025" }
+    { "city": "Porto", "country": "Portugal", "lat": 41.1579, "lng": -8.6291, "year": "2024-2026" },
+    { "city": "Delft", "country": "The Netherlands", "lat": 52.0116, "lng": 4.3571, "year": "2023-2024" },
+    { "city": "Barcelona", "country": "Spain", "lat": 41.3851, "lng": 2.1734, "year": "2025" },
+    { "city": "Padova", "country": "Italy", "lat": 45.4064, "lng": 11.8768, "year": "2026" },
+    { "city": "Tromsø", "country": "Norway", "lat": 69.6492, "lng": 18.9553, "year": "2026" },
+    { "city": "Aalborg", "country": "Denmark", "lat": 57.0488, "lng": 9.9217, "year": "2025" },
+    { "city": "Trento", "country": "Italy", "lat": 46.0711, "lng": 11.1219, "year": "2025" },
+    { "city": "Piraeus", "country": "Greece", "lat": 37.9425, "lng": 23.6466, "year": "2023" },
+    { "city": "Kaiserslautern", "country": "Germany", "lat": 49.444, "lng": 7.768, "year": "2023" },
+    { "city": "Aveiro", "country": "Portugal", "lat": 40.6405, "lng": -8.6538, "year": "2022-2023" },
+    { "city": "Cacia", "country": "Portugal", "lat": 40.6776, "lng": -8.6234, "year": "2023" },
+    { "city": "Alfena", "country": "Portugal", "lat": 41.2367, "lng": -8.5415, "year": "2023" }
   ],
-  "musicAlbums": [
+  "musicAlbums": [],
+  "certifications": [
     {
-      "artist": "Artist Name",
-      "album": "Album Title",
-      "platform": "Spotify",
-      "url": "https://open.spotify.com/"
+      "title": "Professional Scrum Master I",
+      "issuer": "Scrum.org",
+      "year": "2023"
     },
     {
-      "artist": "Another Artist",
-      "album": "Another Album",
-      "platform": "Bandcamp",
-      "url": "https://bandcamp.com/"
+      "title": "Lean Six Sigma Green Belt",
+      "issuer": "ESTIEM and Dr. Gregory Watson",
+      "year": "2023"
     }
+  ],
+  "teaching": [
+    {
+      "title": "Invited assistant (Statistics)",
+      "organization": "Faculty of Engineering, University of Porto",
+      "location": "Porto, Portugal",
+      "period": "September 2025 - January 2026"
+    },
+    {
+      "title": "Monitor (Projeto FEUP)",
+      "organization": "Faculty of Engineering, University of Porto",
+      "location": "Porto, Portugal",
+      "period": "September 2024 - January 2025"
+    },
+    {
+      "title": "Monitor (Projeto FEUP)",
+      "organization": "Faculty of Engineering, University of Porto",
+      "location": "Porto, Portugal",
+      "period": "September 2022 - January 2023"
+    },
+    {
+      "title": "Lean Six Sigma Green Belt Instructor",
+      "organization": "ESTIEM",
+      "location": "Piraeus, Greece",
+      "period": "April 2023"
+    },
+    {
+      "title": "Lean Six Sigma Green Belt Instructor",
+      "organization": "ESTIEM",
+      "location": "Kaiserslautern, Germany",
+      "period": "February 2023"
+    },
+    {
+      "title": "Lean Six Sigma Green Belt Instructor",
+      "organization": "ESTIEM",
+      "location": "Aveiro, Portugal",
+      "period": "December 2022"
+    }
+  ],
+  "ongoingWork": [
+    "lunet2026_turbines",
+    "lunet2025_tutorial"
+  ],
+  "communications": [
+    "com_lunet2025_gecco",
+    "com_lunet2025_iems",
+    "com_lunet2023_copegi"
   ]
 }
