@@ -1,0 +1,98 @@
+{
+  "profile": {
+    "fullName": "Your Full Name",
+    "tagline": "PhD Candidate in XYZ | Data Scientist | Researcher",
+    "bio": "Write a short paragraph about yourself here. Include your main interests, your current role, and your long-term goals.",
+    "photo": "assets/profile-placeholder.svg",
+    "cv": "assets/cv.pdf",
+    "relevantLinks": [
+      { "label": "GitHub", "url": "https://github.com/your-username" },
+      { "label": "ORCID", "url": "https://orcid.org/0000-0000-0000-0000" },
+      { "label": "Scopus", "url": "https://www.scopus.com/authid/detail.uri?authorId=00000000000" },
+      { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/your-name" },
+      { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=your-id" }
+    ]
+  },
+  "education": [
+    {
+      "title": "PhD in Example Field",
+      "organization": "Example University",
+      "location": "City, Country",
+      "period": "2023 - Present",
+      "details": "Focus on machine learning for scientific applications."
+    },
+    {
+      "title": "MSc in Example Field",
+      "organization": "Example University",
+      "location": "City, Country",
+      "period": "2020 - 2022",
+      "details": "Thesis on example topic with distinction."
+    }
+  ],
+  "professionalExperience": [
+    {
+      "title": "Data Scientist",
+      "organization": "Example Company",
+      "location": "Remote",
+      "period": "2022 - Present",
+      "details": "Built analytics pipelines and deployed predictive models."
+    }
+  ],
+  "researchExperience": [
+    {
+      "title": "Research Assistant",
+      "organization": "Example Lab",
+      "location": "City, Country",
+      "period": "2021 - 2023",
+      "details": "Worked on experiments and co-authored journal publications."
+    }
+  ],
+  "publications": [
+    {
+      "authors": "Surname, A.; Surname, B.",
+      "title": "Example Publication Title",
+      "venue": "Journal of Example Research",
+      "year": "2025",
+      "url": "https://doi.org/xx.xxxx/example"
+    },
+    {
+      "authors": "Surname, A.; Surname, C.",
+      "title": "Another Example Paper",
+      "venue": "Conference on Example Systems",
+      "year": "2024",
+      "url": ""
+    }
+  ],
+  "attendedConferencesWorkshops": [
+    {
+      "name": "International Conference on Something",
+      "location": "Lisbon, Portugal",
+      "year": "2025"
+    },
+    {
+      "name": "Workshop on Data and Society",
+      "location": "Madrid, Spain",
+      "year": "2024"
+    }
+  ],
+  "travelPlaces": [
+    { "city": "Porto", "country": "Portugal", "lat": 41.1579, "lng": -8.6291, "year": "2024" },
+    { "city": "Berlin", "country": "Germany", "lat": 52.52, "lng": 13.405, "year": "2023" },
+    { "city": "Santiago", "country": "Chile", "lat": -33.4489, "lng": -70.6693, "year": "2022" },
+    { "city": "Tokyo", "country": "Japan", "lat": 35.6762, "lng": 139.6503, "year": "2025" }
+  ],
+  "musicAlbums": [
+    {
+      "artist": "Artist Name",
+      "album": "Album Title",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/"
+    },
+    {
+      "artist": "Another Artist",
+      "album": "Another Album",
+      "platform": "Bandcamp",
+      "url": "https://bandcamp.com/"
+    }
+  ]
+}
