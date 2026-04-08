@@ -57,7 +57,10 @@
 
       <section id="education" class="card reveal">
         <h2>Education</h2>
-        <div id="education-list" class="timeline"></div>
+        <h3>Long Duration</h3>
+        <div id="education-long-list" class="timeline"></div>
+        <h3>Short Duration</h3>
+        <div id="education-short-list" class="timeline"></div>
       </section>
 
       <section id="professional" class="card reveal">
@@ -65,9 +68,9 @@
         <div id="professional-list" class="timeline"></div>
       </section>
 
-      <section id="research" class="card reveal">
-        <h2>Research Experience</h2>
-        <div id="research-list" class="timeline"></div>
+      <section id="teaching" class="card reveal">
+        <h2>Teaching Experience</h2>
+        <div id="teaching-list" class="timeline"></div>
       </section>
 
       <section id="publications" class="card reveal">
@@ -75,19 +78,34 @@
         <ol id="publications-list" class="publications"></ol>
       </section>
 
-      <section id="conferences" class="card reveal">
-        <h2>Attended Conferences & Workshops</h2>
-        <ul id="conferences-list" class="stack-list"></ul>
+      <section id="ongoing" class="card reveal">
+        <h2>Work in Progress</h2>
+        <ul id="ongoing-list" class="stack-list"></ul>
+      </section>
+
+      <section id="communications" class="card reveal">
+        <h2>Presentations and Communications</h2>
+        <ul id="communications-list" class="stack-list"></ul>
       </section>
 
       <section id="travel" class="card reveal">
         <h2>Travel Map</h2>
         <p class="muted">Places visited around the world.</p>
+        <div class="travel-toolbar">
+          <label>
+            Year
+            <select id="year-filter">
+              <option value="all">All</option>
+            </select>
+          </label>
+        </div>
+        <div id="map-legend" class="map-legend"></div>
         <div id="travel-map" aria-label="World map with visited places"></div>
       </section>
 
       <section id="music" class="card reveal">
-        <h2>Music: Favorite Albums</h2>
+        <h2>Music: My Second Job</h2>
+        <p id="music-intro" class="muted"></p>
         <ul id="music-list" class="music-grid"></ul>
       </section>
     </main>
@@ -101,6 +119,7 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="script.js" type="module"></script>
   </body>
 </html>

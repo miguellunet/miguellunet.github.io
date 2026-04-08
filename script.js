@@ -1,4 +1,5 @@
 const dataPath = "./data/site-data.json";
+const travelPath = "./data/travel.xlsx";
 
 const el = {
   siteTitle: document.querySelector("#site-title"),
@@ -8,12 +9,17 @@ const el = {
   profileImage: document.querySelector("#profile-image"),
   cvLink: document.querySelector("#cv-link"),
   relevantLinks: document.querySelector("#relevant-links"),
-  educationList: document.querySelector("#education-list"),
+  educationLongList: document.querySelector("#education-long-list"),
+  educationShortList: document.querySelector("#education-short-list"),
   professionalList: document.querySelector("#professional-list"),
-  researchList: document.querySelector("#research-list"),
+  teachingList: document.querySelector("#teaching-list"),
   publicationsList: document.querySelector("#publications-list"),
-  conferencesList: document.querySelector("#conferences-list"),
+  communicationsList: document.querySelector("#communications-list"),
+  ongoingList: document.querySelector("#ongoing-list"),
   musicList: document.querySelector("#music-list"),
+  musicIntro: document.querySelector("#music-intro"),
+  yearFilter: document.querySelector("#year-filter"),
+  mapLegend: document.querySelector("#map-legend"),
 };
 
 bootstrap();
@@ -27,7 +33,8 @@ async function bootstrap() {
 
     const data = await response.json();
     renderSite(data);
-    renderMap(data.travelPlaces || []);
+    const travelPlaces = await loadTravelPlacesFromXlsx();
+    renderMap(travelPlaces.length ? travelPlaces : data.travelPlaces || [], data.mapEmojis || {});
   } catch (error) {
     console.error(error);
     el.bio.textContent =
@@ -35,8 +42,81 @@ async function bootstrap() {
   }
 }
 
+async function loadTravelPlacesFromXlsx() {
+  if (typeof XLSX === "undefined") {
+    return [];
+  }
+
+  try {
+    const response = await fetch(travelPath);
+    if (!response.ok) {
+      return [];
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const workbook = XLSX.read(arrayBuffer, { type: "array" });
+    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(firstSheet, { defval: "" });
+
+    return rows
+      .map((row) => {
+        const city = getRowValue(row, ["City"]);
+        const country = getRowValue(row, ["Country"]);
+        const year = String(getRowValue(row, ["Year"]) || "");
+        const month = String(getRowValue(row, ["Month"]) || "");
+        const context = normalizeContext(String(getRowValue(row, ["Context"]) || ""));
+        const lat = Number(getRowValue(row, ["Latitude", "Lat"]));
+        const lng = Number(getRowValue(row, ["Longitude", "Lng", "Lon", "Long"]));
+
+        return {
+          city,
+          country,
+          year,
+          month,
+          context,
+          lat,
+          lng,
+        };
+      })
+      .filter(
+        (place) =>
+          place.city &&
+          place.country &&
+          Number.isFinite(place.lat) &&
+          Number.isFinite(place.lng)
+      );
+  } catch (error) {
+    console.error("Could not load travel.xlsx", error);
+    return [];
+  }
+}
+
+function getRowValue(row, keys) {
+  const rowKeys = Object.keys(row);
+  const match = rowKeys.find((k) => keys.includes(k.trim()));
+  return match ? row[match] : "";
+}
+
+function normalizeContext(context) {
+  const normalized = context.trim().toLowerCase();
+  if (normalized === "academia") return "Academia";
+  if (normalized === "friends" || normalized === "friedns") return "Friends";
+  if (normalized === "girlfriend" || normalized === "grilfriend") return "Girlfriend";
+  if (normalized === "family" || normalized === "famility" || normalized === "familty") return "Family";
+  return context || "Other";
+}
+
 function renderSite(data) {
   const profile = data.profile || {};
+  const workshopsAsEducation = (data.attendedConferencesWorkshops || []).map((item) => ({
+    title: item.name,
+    organization: "PhD School / Workshop",
+    location: item.location,
+    period: item.year,
+    details: "",
+    url: item.url || item.link || "",
+    linkLabel: item.linkLabel || item.urlLabel || "Open link",
+  }));
 
   el.siteTitle.textContent = profile.fullName || "Your Name";
   el.name.textContent = profile.fullName || "Your Name";
@@ -51,12 +131,20 @@ function renderSite(data) {
     el.cvLink.href = profile.cv;
   }
 
+  if (el.musicIntro) {
+    el.musicIntro.textContent =
+      data.musicIntro ||
+      "Music is my second job, where I compose, perform, and release projects alongside my academic career.";
+  }
+
   renderLinks(profile.relevantLinks || []);
-  renderTimeline(el.educationList, data.education || []);
+  renderTimeline(el.educationLongList, data.education || []);
+  renderTimeline(el.educationShortList, workshopsAsEducation);
   renderTimeline(el.professionalList, data.professionalExperience || []);
-  renderTimeline(el.researchList, data.researchExperience || []);
+  renderTimeline(el.teachingList, data.teaching || []);
   renderPublications(data.publications || []);
-  renderConferences(data.attendedConferencesWorkshops || []);
+  renderOngoingWork(data.ongoingWork || []);
+  renderCommunications(data.communications || []);
   renderMusic(data.musicAlbums || []);
 }
 
@@ -96,9 +184,44 @@ function renderTimeline(container, items) {
     const details = document.createElement("p");
     details.textContent = item.details || "";
 
+    let thesisBox = null;
+    if (item.thesis) {
+      thesisBox = document.createElement("div");
+      thesisBox.className = "thesis-box";
+
+      const thesisLabel = document.createElement("p");
+      thesisLabel.className = "thesis-label";
+      thesisLabel.textContent = "Thesis";
+
+      const thesisText = document.createElement("p");
+      thesisText.className = "thesis-text";
+      thesisText.textContent = item.thesis;
+
+      thesisBox.appendChild(thesisLabel);
+      thesisBox.appendChild(thesisText);
+    }
+
+    const linkUrl = item.url || item.link || "";
+    const linkLabel = item.linkLabel || "Open link";
+    let itemLink = null;
+    if (linkUrl) {
+      itemLink = document.createElement("a");
+      itemLink.href = linkUrl;
+      itemLink.target = "_blank";
+      itemLink.rel = "noopener noreferrer";
+      itemLink.textContent = linkLabel;
+      itemLink.className = "timeline-link";
+    }
+
     card.appendChild(title);
     card.appendChild(meta);
     card.appendChild(details);
+    if (itemLink) {
+      meta.appendChild(document.createTextNode(" ("));
+      meta.appendChild(itemLink);
+      meta.appendChild(document.createTextNode(")"));
+    }
+    if (thesisBox) card.appendChild(thesisBox);
     container.appendChild(card);
   });
 }
@@ -125,45 +248,139 @@ function renderPublications(publications) {
 }
 
 function publicationLabel(pub) {
-  return [pub.authors, `"${pub.title}"`, pub.venue, pub.year]
-    .filter(Boolean)
-    .join(", ");
-}
-
-function renderConferences(items) {
-  el.conferencesList.innerHTML = "";
-
-  items.forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = [item.name, item.location, item.year]
-      .filter(Boolean)
-      .join(" | ");
-    el.conferencesList.appendChild(li);
-  });
+  const parts = [];
+  if (pub.authors) parts.push(pub.authors);
+  if (pub.title) parts.push(`"${pub.title}"`);
+  if (pub.venue) parts.push(pub.venue);
+  if (pub.year) parts.push(pub.year);
+  return parts.filter(Boolean).join(", ");
 }
 
 function renderMusic(albums) {
   el.musicList.innerHTML = "";
 
-  albums.forEach((album) => {
+  const sortedAlbums = [...albums].sort((left, right) => {
+    const leftIsDocumentary = (left.platform || "").toLowerCase() === "youtube";
+    const rightIsDocumentary = (right.platform || "").toLowerCase() === "youtube";
+
+    if (leftIsDocumentary && !rightIsDocumentary) return -1;
+    if (!leftIsDocumentary && rightIsDocumentary) return 1;
+    return 0;
+  });
+
+  sortedAlbums.forEach((album) => {
     const li = document.createElement("li");
 
-    const title = document.createElement("p");
-    title.textContent = `${album.artist} - ${album.album}`;
+    const card = document.createElement("article");
+    card.className = "timeline-item";
+
+    const title = document.createElement("h3");
+    title.textContent = album.album || "Untitled";
+
+    const meta = document.createElement("p");
+    meta.className = "item-meta";
+    meta.textContent = [album.artist, album.year, album.platform]
+      .filter(Boolean)
+      .join(" | ");
+
+    const details = document.createElement("p");
+    details.textContent = album.role || "";
+
+    if ((album.platform || "").toLowerCase() === "spotify") {
+      const albumId = extractSpotifyAlbumId(album.url || "");
+      if (albumId) {
+        const iframe = document.createElement("iframe");
+        iframe.className = "music-preview music-preview-spotify";
+        iframe.src = `https://open.spotify.com/embed/album/${albumId}`;
+        iframe.title = `${album.album} preview`;
+        iframe.loading = "lazy";
+        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        card.appendChild(iframe);
+      }
+    }
+
+    if ((album.platform || "").toLowerCase() === "youtube") {
+      const videoId = extractYouTubeVideoId(album.url || "");
+      if (videoId) {
+        const iframe = document.createElement("iframe");
+        iframe.className = "music-preview music-preview-youtube";
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        iframe.title = `${album.album} documentary preview`;
+        iframe.loading = "lazy";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.allowFullscreen = true;
+        card.appendChild(iframe);
+      }
+    }
 
     const link = document.createElement("a");
     link.href = album.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = album.platform || "Listen";
+    link.textContent = (album.platform || "Open Link").toLowerCase() === "youtube"
+      ? "Open Documentary"
+      : "Open Album";
 
-    li.appendChild(title);
-    li.appendChild(link);
+    card.appendChild(title);
+    card.appendChild(meta);
+    card.appendChild(details);
+    card.appendChild(link);
+    li.appendChild(card);
     el.musicList.appendChild(li);
   });
 }
 
-function renderMap(places) {
+function extractSpotifyAlbumId(url) {
+  const match = url.match(/spotify\.com\/[^/]+\/album\/([A-Za-z0-9]+)/i) ||
+    url.match(/spotify\.com\/album\/([A-Za-z0-9]+)/i);
+  return match ? match[1] : "";
+}
+
+function extractYouTubeVideoId(url) {
+  const shortMatch = url.match(/youtu\.be\/([A-Za-z0-9_-]{6,})/i);
+  if (shortMatch) return shortMatch[1];
+  const longMatch = url.match(/[?&]v=([A-Za-z0-9_-]{6,})/i);
+  if (longMatch) return longMatch[1];
+  return "";
+}
+
+function renderCommunications(communications) {
+  el.communicationsList.innerHTML = "";
+
+  communications.forEach((comm) => {
+    const li = document.createElement("li");
+    const parts = [];
+    
+    if (comm.authors) parts.push(comm.authors);
+    if (comm.title) parts.push(`"${comm.title}"`);
+    if (comm.venue) parts.push(comm.venue);
+    if (comm.type) parts.push(`[${comm.type}]`);
+    if (comm.year) parts.push(comm.year);
+    
+    li.textContent = parts.filter(Boolean).join(", ");
+    el.communicationsList.appendChild(li);
+  });
+}
+
+function renderOngoingWork(works) {
+  el.ongoingList.innerHTML = "";
+
+  works.forEach((work) => {
+    const li = document.createElement("li");
+    const parts = [];
+    
+    if (work.authors) parts.push(work.authors);
+    if (work.title) parts.push(`"${work.title}"`);
+    if (work.status) parts.push(`(${work.status})`);
+    if (work.year) parts.push(work.year);
+    
+    li.textContent = parts.filter(Boolean).join(", ");
+    el.ongoingList.appendChild(li);
+  });
+}
+
+function renderMap(places, emojiMap = {}) {
   if (!places.length) {
     return;
   }
@@ -179,23 +396,112 @@ function renderMap(places) {
   }).addTo(map);
 
   const bounds = [];
+  const contextEmojis = {
+    Academia: "🎓",
+    Friends: "👥",
+    Family: "👨‍👩‍👧‍👦",
+    Girlfriend: "💕",
+    Other: "📍",
+    ...emojiMap,
+  };
 
-  places.forEach((place) => {
-    if (typeof place.lat !== "number" || typeof place.lng !== "number") {
-      return;
-    }
+  const years = [...new Set(places.map((p) => p.year).filter(Boolean))].sort(
+    (a, b) => Number(a) - Number(b)
+  );
+  const contexts = [...new Set(places.map((p) => p.context).filter(Boolean))].sort();
+  let selectedContext = "all";
 
-    const marker = L.marker([place.lat, place.lng]).addTo(map);
-    marker.bindPopup(
-      `<strong>${place.city || "Unknown city"}</strong><br>${
-        place.country || ""
-      } ${place.year ? `(${place.year})` : ""}`
-    );
-
-    bounds.push([place.lat, place.lng]);
-  });
-
-  if (bounds.length > 1) {
-    map.fitBounds(bounds, { padding: [35, 35] });
+  if (el.yearFilter) {
+    el.yearFilter.innerHTML = '<option value="all">All</option>';
+    years.forEach((year) => {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      el.yearFilter.appendChild(option);
+    });
   }
+
+  if (el.mapLegend) {
+    el.mapLegend.innerHTML = "";
+
+    const allButton = document.createElement("button");
+    allButton.type = "button";
+    allButton.className = "map-legend-button is-active";
+    allButton.dataset.context = "all";
+    allButton.textContent = "All";
+    el.mapLegend.appendChild(allButton);
+
+    contexts.forEach((context) => {
+      const badge = document.createElement("button");
+      badge.type = "button";
+      badge.className = "map-legend-button";
+      badge.dataset.context = context;
+      badge.textContent = `${contextEmojis[context] || contextEmojis.Other} ${context}`;
+      el.mapLegend.appendChild(badge);
+    });
+  }
+
+  const markerLayer = L.layerGroup().addTo(map);
+
+  function paintMap() {
+    const selectedYear = el.yearFilter ? el.yearFilter.value : "all";
+    const filtered = places.filter((place) => {
+      const yearOk = selectedYear === "all" || place.year === selectedYear;
+      const contextOk = selectedContext === "all" || place.context === selectedContext;
+      return yearOk && contextOk;
+    });
+
+    markerLayer.clearLayers();
+    bounds.length = 0;
+
+    filtered.forEach((place) => {
+      if (typeof place.lat !== "number" || typeof place.lng !== "number") {
+        return;
+      }
+
+      const marker = L.marker([place.lat, place.lng], {
+        icon: L.divIcon({
+          className: "",
+          html: `<div style="font-size:16px;line-height:1;">${
+            contextEmojis[place.context] || contextEmojis.Other
+          }</div>`,
+          iconSize: [16, 16],
+          iconAnchor: [8, 8],
+        }),
+      }).addTo(markerLayer);
+      marker.bindPopup(
+        `<strong>${place.city || "Unknown city"}</strong><br>${place.country || ""}<br>${[
+          place.month,
+          place.year,
+        ]
+          .filter(Boolean)
+          .join(" ")}`
+      );
+
+      bounds.push([place.lat, place.lng]);
+    });
+
+    if (bounds.length > 1) {
+      map.fitBounds(bounds, { padding: [35, 35] });
+    } else if (bounds.length === 1) {
+      map.setView(bounds[0], 5);
+    }
+  }
+
+  if (el.yearFilter) el.yearFilter.onchange = paintMap;
+  if (el.mapLegend) {
+    el.mapLegend.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-context]");
+      if (!button) {
+        return;
+      }
+
+      selectedContext = button.dataset.context || "all";
+      el.mapLegend.querySelectorAll("button[data-context]").forEach((item) => {
+        item.classList.toggle("is-active", item === button);
+      });
+      paintMap();
+    });
+  }
+  paintMap();
 }

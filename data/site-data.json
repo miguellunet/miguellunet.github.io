@@ -1,10 +1,18 @@
 {
+  "sources": {
+    "travelPlaces": {
+      "mapsListUrl": "https://maps.app.goo.gl/mR1GvaL5YQVvtwuw9"
+    },
+    "music": {
+      "spotifyArtistUrl": "https://open.spotify.com/intl-pt/artist/3esk8oZHCOgE7RHgl14hKF?si=tgXXK4m0Sn-NaifWzc-EVg"
+    }
+  },
   "profile": {
     "fullName": "Miguel Maria Pinto Lunet",
     "tagline": "PhD Candidate at FEUP | Researcher at INESC TEC",
-    "bio": "PhD candidate at the Faculty of Engineering, University of Porto, and researcher at INESC TEC. My work focuses on sequential decision-making, explainable AI, combinatorial optimization, transportation, and inventory management.",
-    "photo": "assets/profile-placeholder.svg",
-    "cv": "assets/cv.pdf",
+    "bio": "PhD candidate at the Faculty of Engineering, University of Porto, and researcher at INESC TEC. My work focuses on sequential decision-making applied to management science problems.",
+    "photo": "assets/profilepic.JPG",
+    "cv": "assets/CV___Miguel_Lunet.pdf",
     "relevantLinks": [
       { "label": "Email", "url": "mailto:miguel.lunet@inesctec.pt" },
       { "label": "LinkedIn", "url": "https://www.linkedin.com/in/miguellunet/?locale=en_US" },
@@ -14,20 +22,30 @@
       { "label": "Google Scholar", "url": "https://scholar.google.com/citations?view_op=list_works&hl=pt-PT&hl=pt-PT&user=88ZjLHEAAAAJ" }
     ]
   },
+  "musicIntro": "Music is my second job and a big part of my identity. Alongside research, I compose, perform, and release projects as a solo artist and with my band.",
+  "mapEmojis": {
+    "Academia": "🎓",
+    "Friends": "🤠",
+    "Family": "❤️",
+    "Girlfriend": "🫶",
+    "Other": "📍"
+  },
   "education": [
     {
       "title": "PhD Candidate",
       "organization": "Faculty of Engineering, University of Porto",
       "location": "Porto, Portugal",
       "period": "September 2025 - September 2028",
-      "details": "Dissertation: Sequential Decision-Making Applied to Combinatorial Optimization Problems."
+      "thesis": "Data-driven Optimization for Policy Development in Sequential Decision-Making Problems.",
+      "details": "Doctoral programme in progress."
     },
     {
       "title": "Master",
       "organization": "Faculty of Engineering, University of Porto",
       "location": "Porto, Portugal",
       "period": "September 2023 - July 2025",
-      "details": "GPA: 18.0/20. Dissertation: Policy Development for Contemporary Sequential Decision-Making Problems in Transportation and Inventory Management. Grade: 20/20. Relevant coursework: Business Analytics; Optimization; Econometrics."
+      "thesis": "Policy Development for Contemporary Sequential Decision-Making Problems in Transportation and Inventory Management. Grade: 20/20.",
+      "details": "GPA: 18.0/20. Relevant coursework: Business Analytics; Optimization; Econometrics."
     },
     {
       "title": "Bachelor",
@@ -50,7 +68,7 @@
       "organization": "INESC TEC",
       "location": "Porto, Portugal",
       "period": "April 2024 - Present",
-      "details": "Research on sequential decision-making and explainable AI applied to transportation and inventory management. Published in IJCAI 2024 and GECCO 2025."
+      "details": "Research on sequential decision-making applied to management science problems."
     },
     {
       "title": "Student and entrepreneur",
@@ -99,60 +117,152 @@
   ],
   "publications": [
     {
-      "title": "LUNET2026110007"
+      "authors": "Lunet, M., Buisman, M., Neves-Moreira, F., Amorim, P.",
+      "title": "Aged products spillover effect and the value of holding inventory under stochastic demand: the case of Port wine",
+      "venue": "International Journal of Production Economics",
+      "year": "2026",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0925527326000988",
+      "doi": "https://doi.org/10.1016/j.ijpe.2026.110007"
     },
     {
-      "title": "lunet2025policy"
+      "authors": "Lunet, M., Fernandes, D., Neves-Moreira, F., Amorim, P.",
+      "title": "Symbolic Pricing Policies for Attended Home Delivery - the Case of an Online Retailer",
+      "venue": "Proceedings of the Genetic and Evolutionary Computation Conference",
+      "year": "2025",
+      "url": "https://dl.acm.org/doi/abs/10.1145/3712256.3726361",
+      "doi": "https://doi.org/10.1145/3712256.3726361"
     },
     {
-      "title": "lunet2025symbolic"
+      "authors": "Lunet, M. M. P.",
+      "title": "Policy Development for Contemporary Sequential Decision-Making Problems in Transportation and Inventory Management",
+      "venue": "PhD Thesis, Faculty of Engineering, University of Porto",
+      "year": "2025",
+      "url": "https://hdl.handle.net/10216/167806"
     },
     {
-      "title": "neveslearning"
+      "authors": "Neves-Moreira, F., Fernandes, D., Lunet, M., Amorim, P.",
+      "title": "Learning symbolic expressions to solve multi-period time slot pricing vehicle routing problems",
+      "venue": "XAI Workshop IJCAI 2024",
+      "year": "2024",
+      "url": "https://www.researchgate.net/profile/Fabio-Neves-Moreira/publication/393434945_Learning_symbolic_expressions_to_solve_multi-period_time_slot_pricing_vehicle_routing_problems/links/6869295c07b3253fd1cc6b05/Learning-symbolic-expressions-to-solve-multi-period-time-slot-pricing-vehicle-routing-problems.pdf",
+      "doi": "https://doi.org/10.5281/zenodo.14201676"
+    }
+  ],
+  "communications": [
+    {
+      "authors": "Lunet, M., Fernandes, D., Neves-Moreira, F., Amorim, P.",
+      "title": "Symbolic Pricing Policies for Attended Home Delivery – the Case of an Online Retailer",
+      "venue": "Genetic and Evolutionary Computation Conference (GECCO)",
+      "location": "Málaga, Spain",
+      "type": "Oral presentation (15 minutes)",
+      "year": "2025"
+    },
+    {
+      "authors": "Lunet, M., Neves-Moreira, F., Buisman, M., Amorim, P.",
+      "title": "Sequential decision-making in the inventory management of Port wine",
+      "venue": "IEMS '25 - 16th Industrial Engineering and Management Symposium",
+      "location": "Porto, Portugal",
+      "type": "Oral presentation (15 minutes)",
+      "year": "2025"
+    },
+    {
+      "authors": "Lunet, M.",
+      "title": "Identification and resolution of integrity and reliability issues in the data of Jerónimo Martins' distribution centers' operations",
+      "venue": "COPEGI'23 - Congresso de Projetos em Engenharia e Gestão Industrial",
+      "location": "Porto, Portugal",
+      "type": "Oral presentation (7 minutes)",
+      "year": "2023"
+    }
+  ],
+  "ongoingWork": [
+    {
+      "authors": "Lunet, M., Schrotenboer, A., Neves-Moreira, F., Amorim, P.",
+      "title": "Routing and Scheduling Offshore Maintenance Operations with Crew Splitting and Transfers",
+      "status": "Manuscript under preparation",
+      "year": "2026"
+    },
+    {
+      "authors": "Lunet, M., Neves-Moreira, F., Amorim, P.",
+      "title": "A Review and Tutorial on Sequential Decision-Making for the Online Facility Assignment Problem",
+      "status": "Manuscript under revision",
+      "year": "2025"
     }
   ],
   "attendedConferencesWorkshops": [
     {
       "name": "10th AIROYoung Workshop and PhD School",
-      "location": "Padova, Italy",
-      "year": "February 2026"
+      "location": "Padua, Italy",
+      "year": "February 2026",
+      "url": "https://ayw2026.github.io"
     },
     {
       "name": "Deep Learning Winter School",
       "location": "Tromsø, Norway",
-      "year": "January 2026"
+      "year": "January 2026",
+      "url": "https://www.visual-intelligence.no/news/nldl-2026-was-a-great-success"
     },
     {
       "name": "Mixed methods and interdisciplinary inquiry",
       "location": "Aalborg, Denmark",
-      "year": "November 2025"
+      "year": "November 2025",
+      "url": "https://phdcourses.dk/Course/139721"
     },
     {
       "name": "EWG PhD School on Retail Operations and Analytics",
       "location": "Barcelona, Spain",
-      "year": "September 2025"
+      "year": "September 2025",
+      "url": "https://www.iese.edu/faculty-research/ewg-retail-operations-annual-meeting-2025/"
     },
     {
       "name": "VeRoLog PhD School on Vehicle Routing and Logistics Optimization 2025",
       "location": "Trento, Italy",
-      "year": "June 2025"
+      "year": "June 2025",
+      "url": "https://verolog2025.unitn.it"
     }
   ],
-  "travelPlaces": [
-    { "city": "Porto", "country": "Portugal", "lat": 41.1579, "lng": -8.6291, "year": "2024-2026" },
-    { "city": "Delft", "country": "The Netherlands", "lat": 52.0116, "lng": 4.3571, "year": "2023-2024" },
-    { "city": "Barcelona", "country": "Spain", "lat": 41.3851, "lng": 2.1734, "year": "2025" },
-    { "city": "Padova", "country": "Italy", "lat": 45.4064, "lng": 11.8768, "year": "2026" },
-    { "city": "Tromsø", "country": "Norway", "lat": 69.6492, "lng": 18.9553, "year": "2026" },
-    { "city": "Aalborg", "country": "Denmark", "lat": 57.0488, "lng": 9.9217, "year": "2025" },
-    { "city": "Trento", "country": "Italy", "lat": 46.0711, "lng": 11.1219, "year": "2025" },
-    { "city": "Piraeus", "country": "Greece", "lat": 37.9425, "lng": 23.6466, "year": "2023" },
-    { "city": "Kaiserslautern", "country": "Germany", "lat": 49.444, "lng": 7.768, "year": "2023" },
-    { "city": "Aveiro", "country": "Portugal", "lat": 40.6405, "lng": -8.6538, "year": "2022-2023" },
-    { "city": "Cacia", "country": "Portugal", "lat": 40.6776, "lng": -8.6234, "year": "2023" },
-    { "city": "Alfena", "country": "Portugal", "lat": 41.2367, "lng": -8.5415, "year": "2023" }
+  "travelPlaces": [],
+  "musicAlbums": [
+    {
+      "artist": "Miguel Lunet & Os Lunáticos",
+      "album": "Band Documentary",
+      "year": "2025",
+      "role": "band manager",
+      "platform": "YouTube",
+      "url": "https://youtu.be/4D-RPx0Du-8?si=ZjtoM5embeJGBPhX"
+    },
+    {
+      "artist": "Miguel Lunet",
+      "album": "Tanto p'ra dar",
+      "year": "2025",
+      "role": "Solo career",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/intl-pt/album/0142B4ICz9xzsrLrZn7mm1?si=MKbnPAXqRuOZiSscj9WgTQ"
+    },
+    {
+      "artist": "Miguel Lunet",
+      "album": "Em bom português",
+      "year": "2022",
+      "role": "Solo career",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/intl-pt/album/44thGFIzOrZmISgOvWEOD3?si=-x2q2ePlRQC8gK76cxsMrw"
+    },
+    {
+      "artist": "Miguel Lunet",
+      "album": "Ensaios",
+      "year": "2021",
+      "role": "Solo career",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/intl-pt/album/41TCgi6N1MaflmiLvFBe34?si=eJUzE7bAQrmWeJCHNHwtrA"
+    },
+    {
+      "artist": "Notoday",
+      "album": "Prelúdio",
+      "year": "2019",
+      "role": "Author and keyboard player",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/intl-pt/album/0sZyCI2Gism5P1rbwSgGhE?si=hhyGpt4SQzOyx-E_nwNQpg"
+    }
   ],
-  "musicAlbums": [],
   "certifications": [
     {
       "title": "Professional Scrum Master I",
@@ -202,14 +312,5 @@
       "location": "Aveiro, Portugal",
       "period": "December 2022"
     }
-  ],
-  "ongoingWork": [
-    "lunet2026_turbines",
-    "lunet2025_tutorial"
-  ],
-  "communications": [
-    "com_lunet2025_gecco",
-    "com_lunet2025_iems",
-    "com_lunet2023_copegi"
   ]
 }
