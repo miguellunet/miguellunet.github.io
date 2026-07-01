@@ -190,6 +190,12 @@
   ],
   "attendedConferencesWorkshops": [
     {
+      "name": "Optimization Under Uncertainty NATCOR Course",
+      "location": "Edinburgh, Scotland",
+      "year": "June 2026",
+      "url": "https://www.natcor.ac.uk/courses/"
+    },
+    {
       "name": "10th AIROYoung Workshop and PhD School",
       "location": "Padua, Italy",
       "year": "February 2026",
