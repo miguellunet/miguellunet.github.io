@@ -10,7 +10,7 @@
   "profile": {
     "fullName": "Miguel Maria Pinto Lunet",
     "tagline": "PhD Candidate at FEUP | Researcher at INESC TEC",
-    "bio": "PhD candidate at the Faculty of Engineering, University of Porto, and researcher at INESC TEC. My work focuses on sequential decision-making applied to management science problems.",
+    "bio": "PhD candidate at the Faculty of Engineering, University of Porto, and researcher at INESC TEC. My work focuses on sequential decision-making applied to operations management problems.",
     "photo": "assets/profilepic.JPG",
     "cv": "assets/CV___Miguel_Lunet.pdf",
     "relevantLinks": [
@@ -36,8 +36,8 @@
       "organization": "Faculty of Engineering, University of Porto",
       "location": "Porto, Portugal",
       "period": "September 2025 - September 2028",
-      "thesis": "Data-driven Optimization for Policy Development in Sequential Decision-Making Problems.",
-      "details": "Doctoral programme in progress."
+      "thesis": "Integrating Operations Research and Reinforcement Learning for Policy Development in Sequential Decision-Making Problems",
+      "details": "Doctoral program in progress. Awarded an FCT PhD Grant (Fundação para a Ciência e a Tecnologia), ranked 1st out of 164 candidates."
     },
     {
       "title": "Master",
@@ -243,6 +243,14 @@
       "role": "band manager",
       "platform": "YouTube",
       "url": "https://youtu.be/4D-RPx0Du-8?si=ZjtoM5embeJGBPhX"
+    },
+    {
+      "artist": "Miguel Lunet",
+      "album": "Rapaz da Geração Z",
+      "year": "2026",
+      "role": "Solo career",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/intl-pt/album/3Rkyrbi9gujrTSuAvHewct?si=eyFLzaPjSyaC8sBfSeMMrw"
     },
     {
       "artist": "Miguel Lunet",
