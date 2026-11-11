@@ -117,6 +117,14 @@
   ],
   "publications": [
     {
+      "authors": "Lunet, M., Buisman, M., Neves-Moreira, F., Amorim, P",
+      "title": "The Human Factor - Why Do People Ignore Algorithms?",
+      "venue": "Magazine (INFORMS)",
+      "year": "2026",
+      "url": "https://pubsonline.informs.org/do/10.1287/LYTX.2026.03.12/full/",
+      "doi": "https://doi.org/10.1287/LYTX.2026.03.12"
+    },
+    {
       "authors": "Lunet, M., Buisman, M., Neves-Moreira, F., Amorim, P.",
       "title": "Aged products spillover effect and the value of holding inventory under stochastic demand: the case of Port wine",
       "venue": "International Journal of Production Economics",
@@ -352,7 +360,7 @@
     },
     {
       "title": "Evaluation Committee",
-      "organization": "Congresso de Projetos de Engenharia e Gestão Industrial (COPEGI)",
+      "organization": "Congresso de Projetos de Engenharia e Gestão Industrial (COPEGI 2026)",
       "details": "Member of the Evaluation Committee."
     },
     {
