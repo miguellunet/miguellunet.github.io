@@ -15,6 +15,7 @@ const el = {
   teachingList: document.querySelector("#teaching-list"),
   publicationsList: document.querySelector("#publications-list"),
   communicationsList: document.querySelector("#communications-list"),
+  serviceList: document.querySelector("#service-list"),
   ongoingList: document.querySelector("#ongoing-list"),
   musicList: document.querySelector("#music-list"),
   musicIntro: document.querySelector("#music-intro"),
@@ -149,6 +150,7 @@ function renderSite(data) {
   renderPublications(data.publications || []);
   renderOngoingWork(data.ongoingWork || []);
   renderCommunications(data.communications || []);
+  renderTimeline(el.serviceList, data.academicService || []);
   renderMusic(data.musicAlbums || []);
 }
 

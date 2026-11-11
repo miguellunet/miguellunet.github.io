@@ -342,5 +342,23 @@
       "location": "Aveiro, Portugal",
       "period": "December 2022"
     }
+  ],
+  "academicService": [
+    {
+      "title": "Peer Review",
+      "organization": "Journal of the Operational Research Society",
+      "period": "2026",
+      "details": "Reviewed 1 article for the Journal of the Operational Research Society."
+    },
+    {
+      "title": "Evaluation Committee",
+      "organization": "Congresso de Projetos de Engenharia e Gestão Industrial (COPEGI)",
+      "details": "Member of the Evaluation Committee."
+    },
+    {
+      "title": "Organization Committee",
+      "organization": "IEMS 27 (Industrial Engineering and Management Symposium)",
+      "details": "Member of the Organization Committee."
+    }
   ]
 }
