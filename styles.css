@@ -432,6 +432,38 @@ h3 {
   z-index: 3;
 }
 
+.year-range-slider-track {
+  transition: background 0.1s;
+}
+
+.year-range-slider.is-collapsed #year-min-filter::-webkit-slider-thumb {
+  transform: translateX(-7px);
+}
+
+.year-range-slider.is-collapsed #year-max-filter::-webkit-slider-thumb {
+  transform: translateX(7px);
+}
+
+.year-range-slider.is-collapsed #year-min-filter::-moz-range-thumb {
+  transform: translateX(-7px);
+}
+
+.year-range-slider.is-collapsed #year-max-filter::-moz-range-thumb {
+  transform: translateX(7px);
+}
+
+.year-range-slider.is-collapsed .year-range-slider-track {
+  background: linear-gradient(
+    to right,
+    #dde4d8 0,
+    #dde4d8 calc(var(--range-start) - 8px),
+    var(--accent) calc(var(--range-start) - 8px),
+    var(--accent) calc(var(--range-end) + 8px),
+    #dde4d8 calc(var(--range-end) + 8px),
+    #dde4d8 100%
+  );
+}
+
 #year-max-filter {
   z-index: 4;
 }

@@ -86,7 +86,6 @@ async function loadTravelPlacesFromXlsx() {
       .filter(
         (place) =>
           place.city &&
-          place.country &&
           Number.isFinite(place.lat) &&
           Number.isFinite(place.lng)
       );
@@ -460,7 +459,31 @@ function renderMap(places, emojiMap = {}) {
 
   const markerLayer = L.layerGroup().addTo(map);
 
+  function syncSliderUI() {
+    const slider = document.querySelector("#year-range-slider");
+    if (!slider || !years.length || selectedMinYear === null || selectedMaxYear === null) {
+      return;
+    }
+
+    const minYear = years[0];
+    const maxYear = years[years.length - 1];
+    const span = maxYear - minYear || 1;
+    const toPct = (y) => ((y - minYear) / span) * 100;
+
+    slider.style.setProperty("--range-start", `${toPct(selectedMinYear)}%`);
+    slider.style.setProperty("--range-end", `${toPct(selectedMaxYear)}%`);
+
+    // When both thumbs sit on the same year, split them apart visually and make
+    // sure the one that can still move is on top.
+    const collapsed = selectedMinYear === selectedMaxYear;
+    slider.classList.toggle("is-collapsed", collapsed);
+    const minOnTop = collapsed && selectedMinYear === maxYear;
+    if (el.yearMinFilter) el.yearMinFilter.style.zIndex = minOnTop ? "5" : "3";
+    if (el.yearMaxFilter) el.yearMaxFilter.style.zIndex = "4";
+  }
+
   function syncYearLabels() {
+    syncSliderUI();
     if (el.yearMinLabel) {
       el.yearMinLabel.textContent = selectedMinYear === null ? "-" : String(selectedMinYear);
     }
@@ -492,15 +515,15 @@ function renderMap(places, emojiMap = {}) {
       const marker = L.marker([place.lat, place.lng], {
         icon: L.divIcon({
           className: "",
-          html: `<div style="font-size:16px;line-height:1;">${
+          html: `<div style="font-size:12px;line-height:1;">${
             contextEmojis[place.context] || contextEmojis.Other
           }</div>`,
-          iconSize: [16, 16],
-          iconAnchor: [8, 8],
+          iconSize: [12, 12],
+          iconAnchor: [6, 6],
         }),
       }).addTo(markerLayer);
       marker.bindPopup(
-        `<strong>${place.city || "Unknown city"}</strong><br>${place.country || ""}<br>${[
+        `<strong>${place.city || "Unknown city"}</strong>${place.country ? `<br>${place.country}` : ""}<br>${[
           place.month,
           place.year,
         ]
