@@ -213,6 +213,13 @@
     }
   ],
   "attendedConferencesWorkshops": [
+
+    {
+      "name": "Transforming Higher Education Through Service-Learning",
+      "location": "Alcala de Henares, Spain",
+      "year": "November 2026",
+      "url": "https://www.eugloh.eu/courses-trainings/activities/teaching-that-gives-back-transforming-higher-education-through-service-learning/"
+    },
     {
       "name": "Optimization Under Uncertainty NATCOR Course",
       "location": "Edinburgh, Scotland",
